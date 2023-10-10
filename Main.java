@@ -1,6 +1,9 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Date;
+import java.util.Calendar;
+import java.text.SimpleDateFormat;
 
 
 // Main.java
@@ -40,14 +43,73 @@ public class Main {
 
 
         // Open a csv file using the split() method on a string object
-        String path = "C:\\Users\\BE218\\javaDataFiles\\arrivingAnimals.txt";
+        String path = "C:\\Users\\BE218\\Desktop\\arrivingAnimals.txt";
         String myFileLine = "";
 
         try {
             BufferedReader reader = new BufferedReader(new FileReader(path));
+            int myCounter = 1;
             while ((myFileLine = reader.readLine()) != null) {
-                String[] myArray = myFileLine.split(",");
+                // The input data from arrvingAnimals Looks like this:
+                // 4 year old female hyena, born in spring, tan color, 70 pounds, from Friguia Park, Tunisia
 
+                // Create a String array named myArrayOfAnimalData
+                String[] myArrayofAnimalData = myFileLine.split(",");
+
+
+                // Create another String array named
+                String[] myArrayOfAgeGenderSpecies = myArrayofAnimalData[0].split(" ");
+
+                // output the Age, Gender and Species
+                System.out.println("\nAge in years: " + myArrayOfAgeGenderSpecies[0]);
+                System.out.println("\nText for age (should be 'year') " + myArrayOfAgeGenderSpecies[1]);
+                System.out.println("\nText for age (should be 'old') " + myArrayOfAgeGenderSpecies[2]);
+                System.out.println("\nGender is " + myArrayOfAgeGenderSpecies[3]);
+                System.out.println("\nSpecies is " + myArrayOfAgeGenderSpecies[4]);
+
+
+                // Code of the BirthDate() method
+                // Get today's date
+                Date currentDate = new Date();
+
+
+                // Create a calendar instance and set it to today's date
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(currentDate);
+
+                // Subtract 4 years from the date
+                calendar.add(Calendar.YEAR, - Integer.parseInt(myArrayOfAgeGenderSpecies[0]));
+
+                // Get the result as a Date object
+                Date YearsAgo = calendar.getTime();
+
+                // Format and print the result
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                String formattedDate = dateFormat.format(YearsAgo);
+                System.out.println("Today's Date: " + dateFormat.format(currentDate));
+                System.out.println("Date " +myArrayOfAgeGenderSpecies[0] + " Years Ago: " + formattedDate);
+
+
+
+                System.out.println("\nSpecies is " + myArrayOfAgeGenderSpecies[4]);
+                System.out.println("\n Animal number " + myCounter + "*************");
+                System.out.println("\nmyArrayofAnimalData[0] is.. " +myArrayofAnimalData[0]);
+                System.out.println("\nmyArrayofAnimalData[1] is.. " +myArrayofAnimalData[1]);
+                System.out.println("\nmyArrayofAnimalData[2] is.. " +myArrayofAnimalData[2]);
+                System.out.println("\nmyArrayofAnimalData[3] is.. " +myArrayofAnimalData[3]);
+                System.out.println("\nmyArrayofAnimalData[4] is.. " +myArrayofAnimalData[4]);
+                System.out.println("\nmyArrayofAnimalData[5] is.. " +myArrayofAnimalData[5]);
+                System.out.println("\n\n");
+
+                //increment the animal counter
+                myCounter++;
+
+
+
+
+
+
+                /*
                 String myStr = myArray[0];
                 System.out.println("\n myStr = " + myStr);
                 myArray = myStr.split(" ");
@@ -76,4 +138,3 @@ public class Main {
 
 
 }
-

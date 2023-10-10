@@ -21,36 +21,36 @@ public class Bear extends Animal {
     public Bear() {
         System.out.println("\n A new Bear object was created!!!");
         numOfBears++;
-   }
+    }
 
-   // Create a method that input hyena names from a file named: animalNames.txt
-   public static void inputBearNames()  {
-       // Define the file path
-       String filePath = "C:\\Users\\BE218\\javaDataFiles\\animalNames.txt";
+    // Create a method that input hyena names from a file named: animalNames.txt
+    public static void inputBearNames()  {
+        // Define the file path
+        String filePath = "C:\\Users\\BE218\\Desktop\\animalNames.txt";
 
-       try (BufferedReader fileReader = new BufferedReader(new FileReader(filePath));
-            Scanner scanner = new Scanner(System.in)) {
-           String line;
-           int lineNum = 1;
-           while ((line = fileReader.readLine()) != null) {
+        try (BufferedReader fileReader = new BufferedReader(new FileReader(filePath));
+             Scanner scanner = new Scanner(System.in)) {
+            String line;
+            int lineNum = 1;
+            while ((line = fileReader.readLine()) != null) {
 
-               if (lineNum == 11) {
-                   // Split the line into an array of values using a comma as the delimiter
-                   String[] values = line.split(",");
-                   // Process the values and add them to the ArrayList
-                   for (String value : values) {
-                       myListOfBearNames.add(value.trim()); // Trim removes leading/trailing spaces
-                   }
-               }
+                if (lineNum == 11) {
+                    // Split the line into an array of values using a comma as the delimiter
+                    String[] values = line.split(",");
+                    // Process the values and add them to the ArrayList
+                    for (String value : values) {
+                        myListOfBearNames.add(value.trim()); // Trim removes leading/trailing spaces
+                    }
+                }
 
-               lineNum++;
-           }
-       } catch (IOException e) {
-           e.printStackTrace();
-       }
+                lineNum++;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
-   }
+    }
 
     // output the list.
     public static void listOut() {
